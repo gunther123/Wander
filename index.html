@@ -8,22 +8,19 @@
     <!-- Tailwinds 2.0(?) CDN -->
     <!-- https://tailwindcss.com/docs -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link href="/assets/css/style.css" rel="stylesheet">
+    <!--<link href="/assets/css/style.css" rel="stylesheet">-->
 </head>
 <body>
     <div class="container mx-5">
-        <h1 class="text-2xl font-bold">Hello, Tailwind!</h1>
-        <p class="my-5">Let's learn how to use this new CSS framework.</p>
+        <h1 class="text-2xl font-bold">Hello!</h1>
+        <p class="my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, odio. Sint sequi commodi excepturi maxime eius eligendi ipsum itaque modi, blanditiis placeat ad voluptatum ipsa sunt tempora distinctio? Sed, ullam?</p>
         <label for="cars">Select a State:</label>
         
-        <select name="states" id="states">
-            <option value="MN">Minnesota</option>
-            <option value="NY">New York</option>
-            <option value="WI">Wisconsin</option>
-            <option value="CA">California</option>
+        <select class="form-select mt-1" name="states" id="states">
+            <!-- This picklist is populated by the populateStateSelect() function! -->
         </select><br><br>
         <button id="searchBtn" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
-            Button
+            Search
           </button>
       </div>
 
