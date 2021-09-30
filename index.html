@@ -14,14 +14,24 @@
     <div class="container mx-5">
         <h1 class="text-2xl font-bold">Hello, Tailwind!</h1>
         <p class="my-5">Let's learn how to use this new CSS framework.</p>
-        <button class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
-            Button!
+        <label for="cars">Select a State:</label>
+        
+        <select name="states" id="states">
+            <option value="MN">Minnesota</option>
+            <option value="NY">New York</option>
+            <option value="WI">Wisconsin</option>
+            <option value="CA">California</option>
+        </select><br><br>
+        <button id="searchBtn" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
+            Button
           </button>
       </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!-- Load our javascript file. -->
     <script src="/assets/js/script.js"></script>
     <!-- Jquery 3.6.0 CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
 </body>
 </html>
