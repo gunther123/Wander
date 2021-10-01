@@ -3,7 +3,7 @@
 ## User Stories
 ```
 As a NATURE LIKING INDIVIDUAL
-I want to FIND PARKS IN MY COUNTY
+I want to FIND NATIONAL PARKS IN A STATE
 so that I CAN SEE WHAT OPTIONS ARE AVAILABLE TO ME
 and the WEATHER CONDITIONS AT SAID PARKS.
 ```
@@ -18,7 +18,6 @@ Using the [NPS.Gov](https://www.nps.gov/) API, The user may input a two characte
 ## Example API Calls
 
 * Nationa Parks in NY:
-   
    ```https://developer.nps.gov/api/v1/parks?stateCode=NY&api_key=KrGPbUdmA0msAP4qXYSGzKcU89oOOcHNzdJ7Gpek```
 
 ## External Resources
