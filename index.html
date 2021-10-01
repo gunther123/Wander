@@ -9,9 +9,50 @@
     <!-- https://tailwindcss.com/docs -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <!--<link href="/assets/css/style.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="assets\font-awesome-4.7.0\css\font-awesome.min.css">
 </head>
 <body>
-    <div class="container mx-5">
+<nav class="bg-gray-900">
+    <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div class="relative flex items-center justify-between h-16">
+
+            <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-white px-3 text-lg font-medium"><i class="fa fa-tree" aria-hidden="true"></i> Wander</span>
+                </div>
+                <div class="hidden sm:block sm:ml-6">
+                    <div class="flex space-x-4">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="#" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
+                            aria-current="page">Park Search</a>
+
+                        <a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">About</a>
+
+                        <!--<a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+
+                        <a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="container mx-5 mx-auto">
         <h1 class="text-2xl font-bold">Hello!</h1>
         <p class="my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, odio. Sint sequi commodi excepturi maxime eius eligendi ipsum itaque modi, blanditiis placeat ad voluptatum ipsa sunt tempora distinctio? Sed, ullam?</p>
         <label for="cars">Select a State:</label>
@@ -19,7 +60,7 @@
         <select class="form-select mt-1" name="states" id="states">
             <!-- This picklist is populated by the populateStateSelect() function! -->
         </select><br><br>
-        <button id="searchBtn" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
+        <button id="searchBtn" class="text-white font-bold hover:bg-blue-500 bg-blue-600 py-2 px-4 rounded">
             Search
           </button>
       </div>
