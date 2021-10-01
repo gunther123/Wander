@@ -18,8 +18,8 @@ Using the [NPS.Gov](https://www.nps.gov/) API, The user may input a two characte
 ## Example API Calls
 
 * Nationa Parks in NY:
-
    ```https://developer.nps.gov/api/v1/parks?stateCode=NY&api_key=KrGPbUdmA0msAP4qXYSGzKcU89oOOcHNzdJ7Gpek```
+
 ## External Resources
 * [NPS.gov API Docs](https://www.nps.gov/subjects/developer/api-documentation.htm)
 * [OpenWeather API Docs](https://openweathermap.org/api)
