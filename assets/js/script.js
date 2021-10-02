@@ -40,10 +40,19 @@ $("#searchBtn").click(function () {
 
 function renderParksInConsole(arr) {
     let parkNum = 0
+    let parkListUl = `<ul id="park-list-ul"></ul>`
+    let parkList = ``
+
     for (let parks of arr) {
-        parkNum++
-        console.log('Park ' + parkNum + ': ' + parks.fullName);
+        let parkName = parks.fullName
+        let parkURL = parks.url
+        let parkListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='${parkURL}'>${parkName}</a></li>`
+        parkList += parkListLi
+        console.log(parkList)
+        parkNum++   
     }
+    $('#park-list-container').html(parkListUl)
+    $('#park-list-ul').html(parkList)
 }
 
 function populateStateSelect(state) {
