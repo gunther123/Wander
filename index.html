@@ -1,34 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>National Parks Buddy</title>
-    <!-- Tailwinds 2.0(?) CDN -->
-    <!-- https://tailwindcss.com/docs -->
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <!--<link href="/assets/css/style.css" rel="stylesheet">-->
-</head>
-<body>
-    <div class="container mx-5">
-        <h1 class="text-2xl font-bold">Hello!</h1>
-        <p class="my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, odio. Sint sequi commodi excepturi maxime eius eligendi ipsum itaque modi, blanditiis placeat ad voluptatum ipsa sunt tempora distinctio? Sed, ullam?</p>
-        <label for="cars">Select a State:</label>
-        
-        <select class="form-select mt-1" name="states" id="states">
-            <!-- This picklist is populated by the populateStateSelect() function! -->
-        </select><br><br>
-        <button id="searchBtn" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
-            Search
-          </button>
-      </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>National Parks Buddy</title>
+		<!-- Tailwinds 2.0(?) CDN -->
+		<!-- https://tailwindcss.com/docs -->
+		<link
+			href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+			rel="stylesheet"
+		/>
+		<link href="/assets/css/style.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/24e2fa70a5.js" crossorigin="anonymous"></script>
+	</head>
+	<body class="bg-yellow-100">
+		<nav class="flex items-center justify-between flex-wrap bg-green-900 p-6">
+			<div class="flex items-center flex-shrink-0 text-white mr-6">
+				<span class="font-bold text-5xl text-yellow-100 tracking-tight m-2">Wander</span>
+                <i class="fa-white fa-person-hiking h-20 w-20"></i>
+			</div>
+		</nav>
+		<div class="container text-center my-10 py-5">
+			<h1 class="text-3xl text-yellow-900 font-bold my-5 py-5">
+				Start your adventure!
+			</h1>
+			<label form="cars">Select a State:</label>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Load our javascript file. -->
-    <script src="/assets/js/script.js"></script>
-    <!-- Jquery 3.6.0 CDN -->
-    
-</body>
+			<select class="form-select mt-1" name="states" id="states">
+				<!-- This picklist is populated by the populateStateSelect() function! --></select
+			><br /><br />
+			<button
+				id="searchBtn"
+				class="
+					text-yellow-100
+					font-bold
+					bg-green-900
+					hover:bg-yellow-900
+					py-2
+					px-4
+					rounded
+				"
+			>
+				Search
+			</button>
+		</div>
+
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+			integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+			crossorigin="anonymous"
+		></script>
+		<!-- Load our javascript file. -->
+		<script src="/assets/js/script.js"></script>
+		<!-- Jquery 3.6.0 CDN -->
+	</body>
 </html>
