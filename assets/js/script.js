@@ -10,7 +10,56 @@ const STATES = [
     { value: "AK", disp: "Alaska" },
     { value: "DC", disp: "District of Columbia (DC)" },
     { value: "GU", disp: "Guam" },
-    
+    { value: "AL", disp: "Alabama" },
+    { value: "AR", disp: "Arkansas" },
+    { value: "AZ", disp: "Arizona" },
+    { value: "CA", disp: "California" },
+    { value: "CO", disp: "Colorado" },
+    { value: "FL", disp: "Florida" },
+    { value: "GA", disp: "Georgia" },
+    { value: "HI", disp: "Hawaii" },
+    { value: "ID", disp: "Idaho" },
+    { value: "IL", disp: "Illinois" },
+    { value: "IN", disp: "Indiana" },
+    { value: "IA", disp: "Iowa" },
+    { value: "KS", disp: "Kansas" },
+    { value: "KY", disp: "Kentucky" },
+    { value: "LA", disp: "Louisiana" },
+    { value: "ME", disp: "Maine" },
+    { value: "MD", disp: "Maryland" },
+    { value: "MA", disp: "Massachusetts" },
+    { value: "MI", disp: "Michigan" },
+    { value: "MN", disp: "Minnesota" },
+    { value: "MS", disp: "Mississippi" },
+    { value: "MO", disp: "Missouri" },
+    { value: "MT", disp: "Montana" },
+    { value: "NE", disp: "Nebraska" },
+    { value: "NV", disp: "Nevada" },
+    { value: "NH", disp: "New Hampshire" },
+    { value: "NJ", disp: "New Jersey" },
+    { value: "NM", disp: "New Mexico" },
+    { value: "NY", disp: "New York" },
+    { value: "NC", disp: "North Carolina" },
+    { value: "OH", disp: "Ohio" },
+    { value: "OK", disp: "Oklahoma" },
+    { value: "OR", disp: "Oregon" },
+    { value: "PA", disp: "Pennsylvania" },
+    { value: "RI", disp: "Rhode Island" },
+    { value: "SC", disp: "South Carolina" },
+    { value: "SD", disp: "South Dakota" },
+    { value: "TN", disp: "Tennessee" },
+    { value: "TX", disp: "Texas" },
+    { value: "UT", disp: "Utah" },
+    { value: "VT", disp: "Vermont" },
+    { value: "VA", disp: "Virginia" },
+    { value: "WA", disp: "Washington" },
+    { value: "WV", disp: "West Virginia" },
+    { value: "WI", disp: "Wisconsin" },
+    { value: "WY", disp: "Wyoming" },
+    { value: "AS", disp: "American Samoa" },
+    { value: "MP", disp: "Northern Mariana Islands" },
+    { value: "PR", disp: "Puerto Rico" },
+    { value: "VI", disp: "Virgin Islands" },
 ]
 
 populateStateSelect(STATES);
@@ -63,6 +112,17 @@ function populateStateSelect(state) {
     }
     $('#states').append(option); //Append all the options we just compiled.
     console.log('[State Picklist] Done populating HTML Select!');
+
+    //sort the states alphabetically in the dropdown
+    $(document).ready(function () {
+        $("#states").html($('#states option').sort(function (x, y) {
+            return $(x).text() < $(y).text() ? -1 : 1;
+        }))
+        $("#states").get(0).selectedIndex = 0;
+        e.preventDefault();
+    }
+    );
+
 }
 
 function renderParks(arr) {
