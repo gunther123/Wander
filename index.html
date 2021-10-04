@@ -9,49 +9,54 @@
     <!-- https://tailwindcss.com/docs -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <!--<link href="/assets/css/style.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="assets\font-awesome-4.7.0\css\font-awesome.min.css">
 </head>
 <body class="bg-yellow-100">
-	<nav class="bg-green-900 px-2 py-2"
-    <div class="relative flex items-center justify-between h-16">
+<nav class="bg-green-900 px-2 py-2">
+        <div class="relative flex items-center justify-between h-16">
 
-		<div class="flex-1 flex items-center">
-			<div class="flex-shrink-0 flex items-center">
-				<span class="text-white px-3 text-5xl text-yellow-100 font-medium"><i class="fa fa-tree text-yellow-900" aria-hidden="true"></i> Wander</span>
-			</div>
-			<div class="hidden sm:block sm:ml-6">
-				<div class="flex space-x-4">
+            <div class="flex-1 flex items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-white px-3 text-5xl text-yellow-100 font-medium"><i class="fa fa-tree text-yellow-900" aria-hidden="true"></i>Wander</span>
+                </div>
+                <div class="hidden sm:block sm:ml-6">
+                    <div class="flex space-x-4">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="#" class="text-yellow-100 hover:bg-yellow-900 px-3 py-2 rounded-md text-sm font-medium"
+                            aria-current="page">Favorites</a>
 
-					<a href="#" class="text-yellow-100 hover:bg-yellow-900 px-3 py-2 rounded-md text-sm font-medium"
-						aria-current="page">Favorites</a>
+                        <a href="#"
+                            class="text-yellow-100 hover:bg-yellow-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
 
-					<a href="#"
-						class="text-yellow-100 hover:bg-yellow-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
-
-					<!--<a href="#"
-						class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-					<a href="#"
-						class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>-->
-				</div>
-				</div>
-				</div>
-				</div>
-			</nav>
-		
-        <label for="cars bg-green-400 text-yellow-100">Select a State:</label>
+                        <!--<a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+ <div class="container text-center mx-auto my-5">
+        <h1 class="text-2xl text-yellow-900 font-bold">Start your adventure!</h1>
+        <p class="my-5 text-sm text-yellow-900 font-bold">Select a state from the drop down to view the National Parks available in that state.</p>
+        <label for="cars">Select a State:</label>
         
         <select class="form-select mt-1" name="states" id="states">
             <!-- This picklist is populated by the populateStateSelect() function! -->
         </select><br><br>
-        <button id="searchBtn" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
+        <button id="searchBtn" class="text-yellow-100 font-bold bg-green-900 hover:bg-yellow-900 py-2 px-4 rounded">
             Search
           </button>
       </div>
 
 	<!-- Generate parks list -->
-
-    <div id="park-list-container">
-        
-    </div>  
+<div class="container flex justify-center">
+<div class="text-left text-md font-bold text-left text-yellow-900">
+    <div id="park-list-container"></div>
+</div>  
+</div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
