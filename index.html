@@ -8,7 +8,12 @@
     <!-- Tailwinds 2.0(?) CDN -->
     <!-- https://tailwindcss.com/docs -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!--<link href="/assets/css/style.css" rel="stylesheet">-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
 </head>
 <body>
     <div class="container mx-5">
@@ -16,7 +21,7 @@
         <p class="my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, odio. Sint sequi commodi excepturi maxime eius eligendi ipsum itaque modi, blanditiis placeat ad voluptatum ipsa sunt tempora distinctio? Sed, ullam?</p>
         <label for="cars">Select a State:</label>
         
-        <select class="form-select mt-1" name="states" id="states">
+        <select class="form-select mt-1 border border-gray-400 px-4 py-2 pr-8 rounded shadow w-1/4" name="states" id="states" placeholder="Pick a state...">
             <!-- This picklist is populated by the populateStateSelect() function! -->
         </select><br><br>
         <button id="searchBtn" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
@@ -27,8 +32,7 @@
         
     </div>  
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
     <!-- Load our javascript file. -->
     <script src="./assets/js/script.js"></script>
     <!-- Jquery 3.6.0 CDN -->

@@ -64,6 +64,12 @@ const STATES = [
 
 populateStateSelect(STATES);
 
+$(document).ready(function () {
+    $('select').selectize({
+        sortField: 'text'
+    });
+});
+
 // When Search is clicked.
 $("#searchBtn").click(function () {
     var selectedState = $('#states').val();
