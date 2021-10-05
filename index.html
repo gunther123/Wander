@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,63 +12,143 @@
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!--<link href="/assets/css/style.css" rel="stylesheet">-->
+    <link href="./assets/css/style.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
+        integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"
+        integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
 
 </head>
+
 <body class="bg-yellow-100">
-<nav class="bg-green-900 sm-border-green-900 px-4 py-2">
+    <nav class="bg-green-900 sm-border-green-900 px-4 py-2">
         <div class="relative flex items-center justify-between h-16">
 
             <div class="flex-1 flex items-center">
                 <div class="flex-shrink-0 flex items-center">
-                    <span class="text-white px-3 text-5xl text-yellow-100 font-medium"><i class="fa fa-tree pr-2" aria-hidden="true"></i>Wander</span>
+                    <span class="text-white px-3 text-5xl text-yellow-100 font-medium"><i class="fa fa-tree pr-2"
+                            aria-hidden="true"></i>Wander</span>
                 </div>
-                
-                    <div class="flex space-x-4">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="#" class="text-yellow-100 hover:bg-yellow-900 mx-5 px-4 py-2 rounded-md text-sm font-medium"
-                            aria-current="page">Favorites</a>
 
-                        <a href="#"
-                            class="text-yellow-100 hover:bg-yellow-900 px-4 py-2 rounded-md text-sm font-medium">About</a>
-                    </div>
+                <div class="flex space-x-4">
+                    <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                    <a href="#"
+                        class="text-yellow-100 hover:bg-yellow-900 mx-5 px-4 py-2 rounded-md text-sm font-medium"
+                        aria-current="page">Favorites</a>
+
+                    <a href="#"
+                        class="text-yellow-100 hover:bg-yellow-900 px-4 py-2 rounded-md text-sm font-medium">About</a>
                 </div>
             </div>
         </div>
-    </div>
-</nav>
- <div class="container items-center text-center mx-auto my-5">
+        </div>
+        </div>
+    </nav>
+    <div class="container items-center text-center mx-auto my-5">
         <h1 class="text-2xl text-yellow-900 font-bold">Start your adventure!</h1>
-        <p class="my-5 text-md text-yellow-900 font-bold">Select a state from the drop down to view the National Parks available in that state.</p>
+        <p class="my-5 text-md text-yellow-900 font-bold">Select a state from the drop down to view the National Parks
+            available in that state.</p>
         <label for="cars" class="text-yellow-900 font-bold">Select a State:</label>
-        
+
         <div class="flex justify-center">
-            <select class="form-select w-1/4 mt-1 px-6 py-6 pr-8 rounded" name="states" id="states" placeholder="Pick a state...">
+            <select class="form-select w-1/4 mt-1 px-6 py-6 pr-8 rounded" name="states" id="states"
+                placeholder="Pick a state...">
                 <!-- This picklist is populated by the populateStateSelect() function! -->
             </select>
         </div><br><br>
         <button id="searchBtn" class="text-yellow-100 font-bold bg-green-900 hover:bg-yellow-900 py-2 px-4 rounded">
             <i class="fa fa-hiking" aria-hidden="true"></i> Search
-          </button>
-      </div>
+        </button>
+    </div>
 
-	<!-- Generate parks list -->
-<div class="container flex justify-center p-2">
-<div class="text-left text-md font-bold text-left text-yellow-900 border-t-8 border-double border-green-900 pt-6 pb-6">
-    <div id="park-list-container"></div>
-</div>  
-</div>
+    <!-- Generate parks list -->
+    <div class="container flex justify-center p-2">
+        <div
+            class="text-left text-md font-bold text-left text-yellow-900 border-t-8 border-double border-green-900 pt-6 pb-6">
+            <div id="park-list-container"></div>
+        </div>
+    </div>
 
-<!-- Add footer -->
 
+
+    <!-- Modal Start-->
+    <div class="parkModal fixed z-10 inset-0 overflow-y-auto" id="parkModal" style="visibility: visible;"
+        aria-labelledby="modal-title" role="dialog" aria-modal="true">
+        <div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+
+            <div class="fixed inset-0 bg-green-900 bg-opacity-75 transition-opacity" aria-hidden="true"></div>
+
+            <!-- This element is to trick the browser into centering the modal contents. -->
+            <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-screen-xl sm:w-full">
+                <div class="bg-yellow-100 px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+
+                    <div class="modalBannerImage"></div>
+                    <h3 class="text-2xl leading-6 font-medium text-gray-900 italic mt-4" id="parkName">African Burial
+                        Ground National Monument</h3>
+                    <div class="flex flex-wrap -mx-4 overflow-hidden">
+
+                        <div class="my-4 px-4 w-1/2 overflow-hidden">
+                            <h3 class="text-lg leading-10 font-medium text-gray-800" id="parkName"><i
+                                    class="fa fa-tree text-gray-700" aria-hidden="true"></i> Details</h3>
+                            <span class="font-semibold">Description:</span> <span class="font-light"
+                                id="parkDescription">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus,
+                                voluptates odio. Reiciendis laborum ab neque? Officia sed hic quibusdam numquam cum
+                                nulla laudantium, voluptas asperiores impedit ipsam neque rem repellat.</span><br>
+                            <span class="font-semibold">Designation:</span> <span class="font-light"
+                                id="parkDesignation">National Monument</span><br>
+                            <span class="font-semibold">Address:</span> <span class="font-light"
+                                id="parkAddress"></span><br>
+                            <span class="font-semibold">Entry Fee:</span> <span class="font-light"
+                                id="parkFeeCost">$0.00</span>
+
+                        </div>
+
+                        <div class="my-4 px-4 w-1/2 overflow-hidden">
+                            <h3 class="text-lg leading-10 font-medium text-gray-800" id="parkName"><i
+                                    class="fa fa-sun text-gray-700" aria-hidden="true"></i> Weather</h3>
+                                    <span class="font-semibold">Current Temp:</span> <span class="font-light" id="weatherTempCurrent">null</span><br>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="bg-yellow-200 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+                    <button type="button" onclick="favoritePark()" id="favButton"
+                        class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-green-800 text-base font-medium text-white hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm">
+                        <i class="fa fa-star py-1 px-1" aria-hidden="true"></i> Add to Favorites
+                    </button>
+                    <button type="button" onclick="openParkWebsite()"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grey-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        Official Website
+                    </button>
+                    <button type="button" onclick="closeModal()"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grey-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        Close
+                    </button>
+                    <button type="button" onclick="test()"
+                        class="mt-3 w-full inline-flex justify-center rounded-md border border-red-300 shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-grey-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
+                        Test
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal End -->
+
+    <!-- Add footer -->
+    <footer class="flex justify-end p-8 bg-green-900 text-yellow-100 text-lg font-bold">Those who WANDER are not
+        lost...<i class="fa fa-compass pl-2" aria-hidden="true"></i> </footer>
 
     <!-- Load our javascript file. -->
     <script src="./assets/js/script.js"></script>
     <!-- Jquery 3.6.0 CDN -->
-    
 </body>
-<footer class="flex justify-end p-8 bg-green-900 text-yellow-100 text-lg font-bold">Those who WANDER are not lost...<i class="fa fa-compass pl-2" aria-hidden="true"></i> </footer>
+
 </html>
