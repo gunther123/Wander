@@ -1,7 +1,7 @@
 const NPSAPIKEY = "KrGPbUdmA0msAP4qXYSGzKcU89oOOcHNzdJ7Gpek";
 const WEATHERAPIKEY = "bd344e93ec76626ec8f7447158241355";
 const PARK_LIMIT = 50; // Limit the number of states being returned.
-var parkData;
+var parkData; //
 var parkSelected;
 var parkWeatherData;
 
@@ -143,7 +143,8 @@ function fetchWeather(lat, long) {
 }
 
 function drawModal(weatherData) {
-    console.log('Modal Data to follow: ');
+    console.log('Weather Data to follow for the park: ');
     console.log(weatherData);
-    console.log('Park selected: '+parkSelected);
+    console.log('Park selected: ' + parkSelected);
+    console.log(parkData.data[parkSelected].fullName);
 }
