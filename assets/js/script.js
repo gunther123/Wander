@@ -75,17 +75,6 @@ function populateStateSelect(state) {
   }
   $("#states").append(option); //Append all the options we just compiled.
   console.log("[State Picklist] Done populating HTML Select!");
-
-  //sort the states alphabetically in the dropdown
-  /* Depreciated with the searchable select (Sorry Sandy!)
-    $(document).ready(function () {
-        $("#states").html($('#states option').sort(function (x, y) {
-            return $(x).text() < $(y).text() ? -1 : 1;
-        }))
-        $("#states").get(0).selectedIndex = 0;
-        e.preventDefault();
-    }
-    );*/
 }
 
 function openPark(park) {
@@ -116,7 +105,7 @@ function openPark(park) {
   /* TODO: Fetch OpenWeather API with lat & long 
     Note: Use the previously defined parkLat & parkLong to pass thorugh the Fetch for OpenWeather.
     */
-  let weather = fetchWeather(parkLat, parkLong);
+  fetchWeather(parkLat, parkLong);
 
   // TODO: Toggle visiblity on modal.
 }
@@ -136,15 +125,46 @@ function fetchWeather(lat, long) {
   )
     .then((response) => response.json())
     .then((data) => {
-      //console.log(data);
       drawModal(data);
     })
     .catch(console.error);
 }
 
 function drawModal(weatherData) {
-    console.log('Weather Data to follow for the park: ');
-    console.log(weatherData);
-    console.log('Park selected: ' + parkSelected);
-    console.log(parkData.data[parkSelected].fullName);
+    /* Park Information */
+    document.getElementById("parkName").innerHTML = parkData.data[parkSelected].fullName;
+    document.getElementById("parkDescription").innerHTML = parkData.data[parkSelected].description;
+    document.getElementById("parkDesignation").innerHTML = parkData.data[parkSelected].designation;
+    document.getElementById("parkAddress").innerHTML = '<br>' + parkData.data[parkSelected].addresses[0].line1 + '<br>' + parkData.data[parkSelected].addresses[0].city + ', ' + parkData.data[parkSelected].addresses[0].stateCode + ' ' + parkData.data[parkSelected].addresses[0].postalCode;
+    document.getElementById("parkFeeCost").innerHTML = '$' + parkData.data[parkSelected].entranceFees[0].cost;
+    document.getElementById("parkFeeDescription").innerHTML = parkData.data[parkSelected].entranceFees[0].description;
+    parkURL = parkData.data[parkSelected].url
+    /* Weather Data */
+    //TODO: Add more weather data
+    document.getElementById("weatherTempCurrent").innerHTML = weatherData.list[0].main.temp + '°F';
+    
+    /* Populate Header Image */
+    let featImg = document.getElementsByClassName("modalBannerImage");
+    let imageURL = parkData.data[parkSelected].images[0].url;
+    featImg[0].style.backgroundImage = "url(" + imageURL + ")";
+    /* Show the modal */
+    $(parkModal).show();
+}
+
+function closeModal() {
+    $(parkModal).hide();
+}
+
+function favoritePark() {
+    //TODO: LocalStorage add park ID & Name
+    document.getElementById("favButton").innerHTML = "Added!";
+
+}
+
+function openMap () {
+    window.open('https://www.google.com/maps/search/' + parkData.data[parkSelected].fullName);
+}
+
+function openParkWebsite() {
+    window.open(parkURL);
 }

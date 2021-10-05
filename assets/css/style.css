@@ -1,0 +1,9 @@
+.modalBannerImage {
+    margin-inline: -30px;
+    margin-top: -50px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.6;
+    background-image: url('https://images.unsplash.com/photo-1519331379826-f10be5486c6f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cGFya3xlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80');
+}
