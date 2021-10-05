@@ -8,8 +8,14 @@
     <!-- Tailwinds 2.0(?) CDN -->
     <!-- https://tailwindcss.com/docs -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!--<link href="/assets/css/style.css" rel="stylesheet">-->
     <link rel="stylesheet" href="assets\font-awesome-4.7.0\css\font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
 </head>
 <body class="bg-yellow-100">
 <nav class="bg-green-900 px-2 py-2">
@@ -43,7 +49,7 @@
         <p class="my-5 text-md text-yellow-900 font-bold">Select a state from the drop down to view the National Parks available in that state.</p>
         <label for="cars">Select a State:</label>
         
-        <select class="form-select mt-1" name="states" id="states">
+        <select class="form-select mt-1 border border-gray-400 px-4 py-2 pr-8 rounded shadow w-1/4" name="states" id="states" placeholder="Pick a state...">
             <!-- This picklist is populated by the populateStateSelect() function! -->
         </select><br><br>
         <button id="searchBtn" class="text-yellow-100 font-bold bg-green-900 hover:bg-yellow-900 py-2 px-4 rounded">
@@ -58,8 +64,7 @@
 </div>  
 </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
     <!-- Load our javascript file. -->
     <script src="./assets/js/script.js"></script>
     <!-- Jquery 3.6.0 CDN -->
