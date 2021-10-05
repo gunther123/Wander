@@ -40,10 +40,9 @@ $("#searchBtn").click(function () {
       console.log(parkData);
     })
     .catch((error) => {
-      console.error("Error: ", error);
+        renderError('NPS API Error!', 'There was a problem fetching parks from the NPS API Endpoint.')
+        console.error("Error: ", error);
     });
-
-  //TODO: Render list of parks to page.
 });
 
 function renderParks(arr) {
@@ -128,7 +127,10 @@ function fetchWeather(lat, long) {
         console.log(data)
       drawModal(data);
     })
-    .catch(console.error);
+      .catch((error) => {
+          renderError('Weather API Error.', 'There was a problem fetching parks from the OpenWeatherMap API Endpoint. Do you have a bad API token?')
+          console.error("Error: ", error);
+      });
 }
 
 function drawModal(weatherData) {
@@ -172,4 +174,11 @@ function openMap () {
 
 function openParkWebsite() {
     window.open(parkURL);
+}
+
+function renderError(title, body) {
+    //Take a title and body, and render a error to page.
+    $(errorAlert).show();
+    document.getElementById("errorTitle").innerHTML = title;
+    document.getElementById("errorBody").innerHTML = body;
 }
