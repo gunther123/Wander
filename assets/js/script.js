@@ -1,9 +1,9 @@
 const NPSAPIKEY = "KrGPbUdmA0msAP4qXYSGzKcU89oOOcHNzdJ7Gpek";
 const WEATHERAPIKEY = "bd344e93ec76626ec8f7447158241355";
 const PARK_LIMIT = 50; // Limit the number of states being returned.
-var parkData; //
-var parkSelected;
 var parkWeatherData;
+var parkSelected;
+var parkData; //
 
 populateStateSelect(STATES);
 
