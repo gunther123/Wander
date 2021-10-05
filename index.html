@@ -12,25 +12,57 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <!--<link href="/assets/css/style.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="assets\font-awesome-4.7.0\css\font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js" integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css" integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
 </head>
-<body>
-    <div class="container mx-5">
-        <h1 class="text-2xl font-bold">Hello!</h1>
-        <p class="my-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, odio. Sint sequi commodi excepturi maxime eius eligendi ipsum itaque modi, blanditiis placeat ad voluptatum ipsa sunt tempora distinctio? Sed, ullam?</p>
+<body class="bg-yellow-100">
+<nav class="bg-green-900 px-2 py-2">
+        <div class="relative flex items-center justify-between h-16">
+
+            <div class="flex-1 flex items-center">
+                <div class="flex-shrink-0 flex items-center">
+                    <span class="text-white px-3 text-5xl text-yellow-100 font-medium"><i class="fa fa-tree text-yellow-900" aria-hidden="true"></i>Wander</span>
+                </div>
+                
+                    <div class="flex space-x-4">
+                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                        <a href="#" class="text-yellow-100 hover:bg-yellow-900 mx-5 px-3 py-2 rounded-md text-sm font-medium"
+                            aria-current="page">Favorites</a>
+
+                        <a href="#"
+                            class="text-yellow-100 hover:bg-yellow-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+
+                        <!--<a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#"
+                            class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Calendar</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+ <div class="container text-center mx-auto my-5">
+        <h1 class="text-2xl text-yellow-900 font-bold">Start your adventure!</h1>
+        <p class="my-5 text-md text-yellow-900 font-bold">Select a state from the drop down to view the National Parks available in that state.</p>
         <label for="cars">Select a State:</label>
         
         <select class="form-select mt-1 border border-gray-400 px-4 py-2 pr-8 rounded shadow w-1/4" name="states" id="states" placeholder="Pick a state...">
             <!-- This picklist is populated by the populateStateSelect() function! -->
         </select><br><br>
-        <button id="searchBtn" class="text-white font-bold bg-blue-600 hover:bg-blue-800 py-2 px-4 rounded">
+        <button id="searchBtn" class="text-yellow-100 font-bold bg-green-900 hover:bg-yellow-900 py-2 px-4 rounded">
             Search
           </button>
       </div>
-    <div id="park-list-container">
-        
-    </div>  
+
+	<!-- Generate parks list -->
+<div class="container flex justify-center p-2">
+<div class="text-left space-y-5 text-md font-bold text-left text-yellow-900">
+    <div id="park-list-container"></div>
+</div>  
+</div>
 
     
     <!-- Load our javascript file. -->
