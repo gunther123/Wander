@@ -35,7 +35,7 @@ $("#searchBtn").click(function () {
           data.data.length +
           " parks. Complete object below:"
       );
-      renderParksInConsole(data.data); //Call the function to show results in web console.
+      renderParks(data.data); //Call the function to show results in web console.
       parkData = data;
       console.log(parkData);
     })
@@ -45,7 +45,7 @@ $("#searchBtn").click(function () {
     });
 });
 
-function renderParksInConsole(arr) {
+function renderParks(arr) {
   let parkNum = 0;
   let parkListUl = `<ul id="park-list-ul"></ul>`;
   let parkList = ``;
@@ -124,6 +124,7 @@ function fetchWeather(lat, long) {
   )
     .then((response) => response.json())
     .then((data) => {
+        console.log(data)
       drawModal(data);
     })
       .catch((error) => {
@@ -142,8 +143,13 @@ function drawModal(weatherData) {
     document.getElementById("parkFeeDescription").innerHTML = parkData.data[parkSelected].entranceFees[0].description;
     parkURL = parkData.data[parkSelected].url
     /* Weather Data */
-    //TODO: Add more weather data
+    let windSpeed = weatherData.list[0].wind.speed
+    windSpeed = Math.round(windSpeed)
     document.getElementById("weatherTempCurrent").innerHTML = weatherData.list[0].main.temp + '°F';
+    document.getElementById("weatherFeelsLikeTemp").innerHTML = weatherData.list[0].main.feels_like + '°F';
+    document.getElementById("weatherConditions").innerHTML = weatherData.list[0].weather[0].description;
+    document.getElementById("weatherHumidity").innerHTML = weatherData.list[0].main.humidity + '%';
+    document.getElementById("weatherWindSpeed").innerHTML = windSpeed + ' mph';
     
     /* Populate Header Image */
     let featImg = document.getElementsByClassName("modalBannerImage");
