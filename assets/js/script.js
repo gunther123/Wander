@@ -158,7 +158,6 @@ function closeModal() {
 function favoritePark() {
     //TODO: LocalStorage add park ID & Name
     document.getElementById("favButton").innerHTML = "Added!";
-
 }
 
 function openMap () {
