@@ -18,7 +18,7 @@
 
 </head>
 <body class="bg-yellow-100">
-<nav class="bg-green-900 px-2 py-2">
+<nav class="bg-green-900 sm-border-green-900 px-4 py-2">
         <div class="relative flex items-center justify-between h-16">
 
             <div class="flex-1 flex items-center">
@@ -28,11 +28,11 @@
                 
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="#" class="text-yellow-100 hover:bg-yellow-900 mx-5 px-3 py-2 rounded-md text-sm font-medium"
+                        <a href="#" class="text-yellow-100 hover:bg-yellow-900 mx-5 px-4 py-2 rounded-md text-sm font-medium"
                             aria-current="page">Favorites</a>
 
                         <a href="#"
-                            class="text-yellow-100 hover:bg-yellow-900 px-3 py-2 rounded-md text-sm font-medium">About</a>
+                            class="text-yellow-100 hover:bg-yellow-900 px-4 py-2 rounded-md text-sm font-medium">About</a>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
         <label for="cars" class="text-yellow-900 font-bold">Select a State:</label>
         
         <div class="flex justify-center">
-            <select class="form-select w-1/4 mt-1 px-4 py-2 pr-8 rounded" name="states" id="states" placeholder="Pick a state...">
+            <select class="form-select w-1/4 mt-1 px-6 py-6 pr-8 rounded" name="states" id="states" placeholder="Pick a state...">
                 <!-- This picklist is populated by the populateStateSelect() function! -->
             </select>
         </div><br><br>
@@ -56,15 +56,18 @@
 
 	<!-- Generate parks list -->
 <div class="container flex justify-center p-2">
-<div class="text-left space-y-5 text-md font-bold text-left text-yellow-900">
+<div class="text-left text-md font-bold text-left text-yellow-900 border-t-8 border-double border-green-900 pt-6 pb-6">
     <div id="park-list-container"></div>
 </div>  
 </div>
 
-    
+<!-- Add footer -->
+
+
     <!-- Load our javascript file. -->
     <script src="./assets/js/script.js"></script>
     <!-- Jquery 3.6.0 CDN -->
     
 </body>
+<footer class="flex justify-end p-8 bg-green-900 text-yellow-100 text-lg font-bold">Those who WANDER are not lost...<i class="fa fa-compass pl-2" aria-hidden="true"></i> </footer>
 </html>
