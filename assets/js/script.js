@@ -9,36 +9,37 @@ var favoriteParks;
 loadFavorites();
 
 function loadFavorites() {
-  console.log('[Favorites] Loading Park Favorites from localStorage');
-  if (localStorage.getItem("favoriteParks") === null) {
-    favoriteParks = [];
-  } else {
-    favoriteParks = localStorage.getItem('favoriteParks');
-  }
-  console.log(favoriteParks);
-  console.log('[Favorites] Park Favorites Loaded');
-  //TODO: Render the array on the page somewhere.
-  renderFavorites()
+    
+    console.log('[Favorites] Loading Park Favorites from localStorage');
+    if (localStorage.getItem("favorites") === null) {
+      favoriteParks = [];
+    } else {
+      favoriteParks = JSON.parse(localStorage.getItem('favoriteParks'));
+    }
+    console.log(favoriteParks);
+    console.log('[Favorites] Park Favorites Loaded');
+    //TODO: Render the array on the page somewhere.
+    //renderFavorites()
+   renderFavorites(favoritePark)
 }
+
 function renderFavorites(arr) {
-    let favParkNum = 0;
-    let favListUl = `<ul id="fav-list-ul"></ul>`;
-    let favList = ``;
-
-    for (let e of arr) {
-    let parkName = parks.fullName;
-    //let parkURL = parks.url
-    let favListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick="openPark(${parkNum})">${parkName}</a></li>`;
-    favList += favListLi;
-    //console.log(parkList)
-    favParkNum++;
-  }
-    $("#favorites-container").html(favListUl);
-    $("#fav-list-ul").html(favListLi);
+ let favParkNum = 0;
+ let favListUl = `<ul id="fav-list-ul"></ul>`;
+ let favList = ``;
+ 
+ for ( i=0; i<10; i++) {
+ //let favorites = favorites.fullName
+ let favListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick="openPark(${parkId})">${parkName}</a></li>`;
+ favList += favListLi;
+ console.log(favList);
+ favParkNum++;
+ }
+   $("#favorites-container").html(favListUl);
+   $("#fav-list-ul").html(favListLi);
 }
 
-
-populateStateSelect(STATES);
+populateStateSelect(STATES); 
 
 $(document).ready(function () {
   $("select").selectize({
@@ -198,12 +199,13 @@ function closeModal() {
 }
 
 function favoritePark() {
+  
   document.getElementById("favButton").innerHTML = "Added!";
   console.log('Adding park to favorites')
   let newEntry = { parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
   favoriteParks.push(newEntry);
   console.log(favoriteParks);
-  localStorage.setItem('favoriteParks', JSON.stringify(favoriteParks));
+  localStorage.setItem('favorites', JSON.stringify(favoriteParks));
 }
 
 function openMap() {
@@ -228,6 +230,7 @@ function openFavModal() {
 function closeFavModal() {
     $(favoriteModal).hide()
 }
+
 
 
 //$("#favorites-btn").click(function() {
