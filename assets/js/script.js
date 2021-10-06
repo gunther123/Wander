@@ -18,6 +18,23 @@ function loadFavorites() {
   console.log(favoriteParks);
   console.log('[Favorites] Park Favorites Loaded');
   //TODO: Render the array on the page somewhere.
+  renderFavorites()
+}
+function renderFavorites(arr) {
+    let favParkNum = 0;
+    let favListUl = `<ul id="fav-list-ul"></ul>`;
+    let favList = ``;
+
+    for (let e of arr) {
+    let parkName = parks.fullName;
+    //let parkURL = parks.url
+    let favListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick="openPark(${parkNum})">${parkName}</a></li>`;
+    favList += favListLi;
+    //console.log(parkList)
+    favParkNum++;
+  }
+    $("#favorites-container").html(favListUl);
+    $("#fav-list-ul").html(favListLi);
 }
 
 
@@ -207,6 +224,9 @@ function openFavModal() {
   $(favoriteModal).show();
   loadFavorites()
   console.log("modal is working?")
+}
+function closeFavModal() {
+    $(favoriteModal).hide()
 }
 
 
