@@ -29,8 +29,9 @@ function renderFavorites(arr) {
  let favList = ``;
  
  for ( i=0; i<10; i++) {
- //let favorites = favorites.fullName
- let favListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick="openPark(${parkId})">${parkName}</a></li>`;
+ 
+ let favListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick='openPark(${parkId})'> ${parkName} </a></li>`;
+ let parkName = favorites.fullName 
  favList += favListLi;
  console.log(favList);
  favParkNum++;
