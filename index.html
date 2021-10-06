@@ -20,7 +20,7 @@
 
 </head>
 
-<body class="bg-yellow-100">
+<body class="flex flex-col min-h-screen bg-yellow-100">
     <nav class="bg-green-900 sm-border-green-900 px-4 py-2">
         <div class="relative flex items-center justify-between h-16">
 
@@ -72,7 +72,7 @@
     <!-- Generate parks list -->
     <div class="container flex justify-center p-2">
         <div
-            class="text-left text-md font-bold text-left text-yellow-900 border-t-8 border-double border-green-900 pt-6 pb-6">
+            class="text-left text-md font-bold text-yellow-900 border-t-8 border-double border-green-900 pt-6 pb-6">
             <div id="park-list-container"></div>
         </div>
     </div>
@@ -156,11 +156,13 @@
         </div>
     </div>
     <!-- Modal End -->
-
-    <!-- Add footer -->
-    <footer class="flex justify-end p-8 bg-green-900 text-yellow-100 text-lg font-bold">Those who WANDER are not
-        lost...<i class="fa fa-compass pl-2" aria-hidden="true"></i> </footer>
-
+	
+	 <!-- Add footer -->
+	<footer> 
+	<div class="flex justify-end p-8 fixed bottom-0 w-full bg-green-900 text-yellow-100 text-lg font-bold">Those who WANDER are not
+		  lost...<i class="fa fa-compass pl-2" aria-hidden="true"></i> 
+	  </div>
+	  </footer>
 
     <!-- Load Thirdparty scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
