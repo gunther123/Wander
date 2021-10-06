@@ -20,6 +20,7 @@ function loadFavorites() {
   //TODO: Render the array on the page somewhere.
 }
 
+
 populateStateSelect(STATES);
 
 $(document).ready(function () {
@@ -202,3 +203,15 @@ function renderError(title, body) {
   document.getElementById("errorTitle").innerHTML = title;
   document.getElementById("errorBody").innerHTML = body;
 }
+function openFavModal() {
+  $(favoriteModal).show();
+  loadFavorites()
+  console.log("modal is working?")
+}
+
+
+//$("#favorites-btn").click(function() {
+  
+  //$( $(this).attr("href") ).show();
+  //console.log("it worked");  
+//})
