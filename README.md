@@ -40,7 +40,7 @@ This project was made possible with hard work and dedication from the following 
  - Steven Slocum ( https://github.com/gunther123 )
 
 ## Technologies 
-Technologies used in the making of this site include HTML, CSS, Tailwinds, DOM Manipulation, JavaScript, JQuery, Modals and API Calls.
+Technologies used in the making of this site include HTML, CSS, Tailwinds, DOM Manipulation, JavaScript, JQuery, Modals, API Calls Fontawesome 5 and SelectizeJS.
 
 ## License
 This website is covered under the GNU General Public License v3.0 (GNU GPLv3).  For more details, see the attached documentation.  
