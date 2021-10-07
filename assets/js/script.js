@@ -4,43 +4,49 @@ const PARK_LIMIT = 50; // Limit the number of states being returned.
 var parkWeatherData;
 var parkSelected;
 var parkData;
-var favoriteParks;
+var favoritepark = []
 
+var favoriteparks
 loadFavorites();
 
 function loadFavorites() {
     
     console.log('[Favorites] Loading Park Favorites from localStorage');
-    if (localStorage.getItem("favorites") === null) {
-      favoriteParks = [];
+    if (localStorage.getItem('favorites') === null) {
+    
     } else {
-      favoriteParks = JSON.parse(localStorage.getItem('favoriteParks'));
+    favoriteParks = JSON.parse(localStorage.getItem('favorites'));
     }
     console.log(favoriteParks);
     console.log('[Favorites] Park Favorites Loaded');
-    //TODO: Render the array on the page somewhere.
-    //renderFavorites()
-   renderFavorites(favoritePark)
+   renderFavorites(favoriteParks)
 }
 
-function renderFavorites(arr) {
- let favParkNum = 0;
- let favListUl = `<ul id="fav-list-ul"></ul>`;
- let favList = ``;
- 
- for ( i=0; i<10; i++) {
- 
- let favListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick='openPark(${parkId})'> ${parkName} </a></li>`;
- let parkName = favorites.fullName 
- favList += favListLi;
- console.log(favList);
- favParkNum++;
- }
-   $("#favorites-container").html(favListUl);
-   $("#fav-list-ul").html(favListLi);
-}
+function renderFavorites(favoriteParks) {
+    let favListUl = `<ul id="fav-list-ul"></ul>`;
+    let favList = ``;
+    let favParkNum = 0; 
+   
+   
+    if(!favoriteParks) {
+        alert("You don't have any favorites yet. Browse around and add some advernterous destinations to your list")
+    } else {
+      var favParkName = favoriteParks.parkName
+      console.log(favParkName)
+      var favParkId = favoriteParks.parkId
+      console.log(favParkId)
+    for (let i = 0; i < 10; i++) {
+      favListLi = `<li><a href='#' onclick='openPark(${favParkId})'> ${favParkName} </a></li>`;
+      favList += favListLi;
+      favParkNum++
+    }
+      $("#favorites-container").html(favListUl);
+      $("#fav-list-ul").html(favListLi);
+  }
 
-populateStateSelect(STATES); 
+}  
+
+ populateStateSelect(STATES); 
 
 $(document).ready(function () {
   $("select").selectize({
@@ -88,7 +94,7 @@ function renderParks(arr) {
   for (let parks of arr) {
     let parkName = parks.fullName;
     //let parkURL = parks.url
-    let parkListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick="openPark(${parkNum})">${parkName}</a></li>`;
+    let parkListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick='openPark(${parkNum})'>${parkName}</a></li>`;
     parkList += parkListLi;
     //console.log(parkList)
     parkNum++;
@@ -199,14 +205,15 @@ function closeModal() {
   $(parkModal).hide();
 }
 
-function favoritePark() {
-  
+function chooseFavoritePark() {
+  let favoritePark = []
+  console.log(favoritePark)
   document.getElementById("favButton").innerHTML = "Added!";
-  console.log('Adding park to favorites')
   let newEntry = { parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
-  favoriteParks.push(newEntry);
-  console.log(favoriteParks);
-  localStorage.setItem('favorites', JSON.stringify(favoriteParks));
+  favoritePark.push(newEntry);
+  console.log(favoritePark);
+  localStorage.setItem("favorites", JSON.stringify(newEntry));
+  console.log('favorites')
 }
 
 function openMap() {
@@ -225,17 +232,10 @@ function renderError(title, body) {
 }
 function openFavModal() {
   $(favoriteModal).show();
-  loadFavorites()
-  console.log("modal is working?")
+  loadFavorites();
+  console.log("modal is working?");
 }
 function closeFavModal() {
-    $(favoriteModal).hide()
+    $(favoriteModal).hide();
 }
 
-
-
-//$("#favorites-btn").click(function() {
-  
-  //$( $(this).attr("href") ).show();
-  //console.log("it worked");  
-//})
