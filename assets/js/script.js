@@ -6,7 +6,6 @@ var parkSelected;
 var parkData;
 var favoriteParks = [];
 
-
 loadFavorites();
 
 function loadFavorites() {
@@ -26,7 +25,6 @@ function renderFavorites(favoriteParks) {
   let favList = ``;
   let favParkNum = 0;
 
-
   if (!favoriteParks) {
     console.log('No Favorites');
     //alert("You don't have any favorites yet. Browse around and add some advernterous destinations to your list")
@@ -43,7 +41,6 @@ function renderFavorites(favoriteParks) {
       $("#fav-list-ul").html(favList);
     }
   }
-
 }
 
 populateStateSelect(STATES);
@@ -54,11 +51,9 @@ $(document).ready(function () {
   });
 });
 
-
 function openFavPark(parkId) {
   console.log('Park selected - ID: ' + parkId)
 }
-
 
 // When Search is clicked.
 $("#searchBtn").click(function () {
@@ -219,7 +214,7 @@ function openMap() {
 }
 
 function openParkWebsite() {
-  window.open(parkURL);
+  window.open(parkURL); 
 }
 
 function renderError(title, body) {
