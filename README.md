@@ -44,4 +44,4 @@ Technologies used in the making of this site include HTML, CSS, Tailwinds, and J
 ## License
 This website is covered under the GNU General Public License v3.0 (GNU GPLv3).  For more details, see the attached documentation.  
 
-./assets/images/License.txt
+./assets/License.txt
