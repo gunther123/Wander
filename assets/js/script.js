@@ -4,9 +4,10 @@ const PARK_LIMIT = 50; // Limit the number of states being returned.
 var parkWeatherData;
 var parkSelected;
 var parkData;
-var favoritepark = []
+var favoritepark 
+var favoriteparks 
 
-var favoriteparks
+
 loadFavorites();
 
 function loadFavorites() {
@@ -18,7 +19,6 @@ function loadFavorites() {
     favoriteParks = JSON.parse(localStorage.getItem('favorites'));
     }
     console.log(favoriteParks);
-    console.log('[Favorites] Park Favorites Loaded');
    renderFavorites(favoriteParks)
 }
 
@@ -35,14 +35,14 @@ function renderFavorites(favoriteParks) {
       console.log(favParkName)
       var favParkId = favoriteParks.parkId
       console.log(favParkId)
-    for (let i = 0; i < 10; i++) {
-      favListLi = `<li><a href='#' onclick='openPark(${favParkId})'> ${favParkName} </a></li>`;
+    for (let i = 0; i < favoriteParks.length; i++) {
+      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openPark(${favParkId})'> ${favParkName} </a></li>`;
       favList += favListLi;
-      favParkNum++
-    }
+     favParkNum++
+    
       $("#favorites-container").html(favListUl);
-      $("#fav-list-ul").html(favListLi);
-  }
+      $("#fav-list-ul").html(favList);
+  }}
 
 }  
 
@@ -209,11 +209,14 @@ function chooseFavoritePark() {
   let favoritePark = []
   console.log(favoritePark)
   document.getElementById("favButton").innerHTML = "Added!";
-  let newEntry = { parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
+  let newEntry = {parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
   favoritePark.push(newEntry);
   console.log(favoritePark);
   localStorage.setItem("favorites", JSON.stringify(newEntry));
-  console.log('favorites')
+
+
+
+
 }
 
 function openMap() {
