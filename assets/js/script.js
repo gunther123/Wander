@@ -27,7 +27,6 @@ function renderFavorites(favoriteParks) {
 
   if (!favoriteParks) {
     console.log('No Favorites');
-    //alert("You don't have any favorites yet. Browse around and add some advernterous destinations to your list")
   } else {
     console.log('There are ' + favoriteParks.length + ' favorite parks.')
     for (let i = 0; i < favoriteParks.length; i++) {
@@ -94,10 +93,8 @@ function renderParks(arr) {
 
   for (let parks of arr) {
     let parkName = parks.fullName;
-    //let parkURL = parks.url
     let parkListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick='openPark(${parkNum})'>${parkName}</a></li>`;
     parkList += parkListLi;
-    //console.log(parkList)
     parkNum++;
   }
   $("#park-list-container").html(parkListUl);
@@ -223,11 +220,12 @@ function renderError(title, body) {
   document.getElementById("errorTitle").innerHTML = title;
   document.getElementById("errorBody").innerHTML = body;
 }
+
 function openFavModal() {
   $(favoriteModal).show();
-  loadFavorites();
-  console.log("modal is working?");
+  loadFavorites(); // I dont think this is needed, but it can stay.-SM
 }
+
 function closeFavModal() {
   $(favoriteModal).hide();
 }
