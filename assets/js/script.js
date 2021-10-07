@@ -210,14 +210,11 @@ function closeModal() {
   $(parkModal).hide();
 }
 
-function chooseFavoritePark() {
-  let favoritePark = []
-  console.log(favoritePark)
+function addFavoritePark() {
   document.getElementById("favButton").innerHTML = "Added!";
   let newEntry = {parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
-  favoritePark.push(newEntry);
-  console.log(favoritePark);
-  localStorage.setItem("favorites", JSON.stringify(newEntry));
+  favoriteParks.push(newEntry);
+  localStorage.setItem("favoriteParks", JSON.stringify(newEntry));
 }
 
 function openMap() {
