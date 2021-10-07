@@ -4,53 +4,49 @@ const PARK_LIMIT = 50; // Limit the number of states being returned.
 var parkWeatherData;
 var parkSelected;
 var parkData;
-var favoritepark;
-var favoriteparks;
+var favoriteParks = [];
 
 
 loadFavorites();
 
 function loadFavorites() {
-    
-    console.log('[Favorites] Loading Park Favorites from localStorage');
-    if (localStorage.getItem('favoriteParks') === null) {
-      favoriteParks = [];
-    } else {
-    favoriteParks = JSON.parse(localStorage.getItem('favoriteParks'));
-    }
-    console.log(favoriteParks);
-   renderFavorites(favoriteParks)
+
+  console.log('[Favorites] Loading Park Favorites from localStorage');
+  if (localStorage.getItem('favoriteParksCollection') === null) {
+    favoriteParks = [];
+  } else {
+    favoriteParks = JSON.parse(localStorage.getItem('favoriteParksCollection'));
+  }
+  console.log(favoriteParks);
+  renderFavorites(favoriteParks);
 }
 
 function renderFavorites(favoriteParks) {
-    let favListUl = `<ul id="fav-list-ul"></ul>`;
-    let favList = ``;
-    let favParkNum = 0; 
-   
-   
-    if(!favoriteParks) {
-      console.log('No Favorites');  
-      //alert("You don't have any favorites yet. Browse around and add some advernterous destinations to your list")
-    } else {
-      var favParkName = favoriteParks.parkName
-      //console.log(favParkName)
-      var favParkId = favoriteParks.parkId
-      //console.log(favParkId)
-      console.log('There are ' + favoriteParks.length + ' favorite parks.')
+  let favListUl = `<ul id="fav-list-ul"></ul>`;
+  let favList = ``;
+  let favParkNum = 0;
+
+
+  if (!favoriteParks) {
+    console.log('No Favorites');
+    //alert("You don't have any favorites yet. Browse around and add some advernterous destinations to your list")
+  } else {
+    console.log('There are ' + favoriteParks.length + ' favorite parks.')
     for (let i = 0; i < favoriteParks.length; i++) {
       favItemName = favoriteParks[i].parkName;
       favItemId = favoriteParks[i].parkId;
       favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favItemId}")'> ${favItemName} </a></li>`;
       favList += favListLi;
       favParkNum++
-    
+
       $("#favorites-container").html(favListUl);
       $("#fav-list-ul").html(favList);
-  }}
+    }
+  }
 
-}  
+}
 
- populateStateSelect(STATES); 
+populateStateSelect(STATES);
 
 $(document).ready(function () {
   $("select").selectize({
@@ -211,10 +207,11 @@ function closeModal() {
 }
 
 function addFavoritePark() {
-  document.getElementById("favButton").innerHTML = "Added!";
-  let newEntry = {parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
+  document.getElementById("favButton").innerHTML = "Added!"
+  let newEntry = { parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
   favoriteParks.push(newEntry);
-  localStorage.setItem("favoriteParks", JSON.stringify(newEntry));
+  localStorage.setItem("favoriteParksCollection", JSON.stringify(favoriteParks));
+  console.log(favoriteParks);
 }
 
 function openMap() {
@@ -237,6 +234,6 @@ function openFavModal() {
   console.log("modal is working?");
 }
 function closeFavModal() {
-    $(favoriteModal).hide();
+  $(favoriteModal).hide();
 }
 
