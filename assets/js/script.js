@@ -21,7 +21,7 @@ function loadFavorites() {
 }
 
 function renderFavorites(favoriteParks) {
-  let favListUl = `<ul id="fav-list-ul"></ul>`;
+  let favListUl = `<ul id="fav-list-ul" class="py-1"></ul>`;
   let favList = ``;
   let favParkNum = 0;
 
