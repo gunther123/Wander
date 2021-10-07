@@ -12,9 +12,7 @@ and the WEATHER CONDITIONS AT SAID PARKS.
 
 The website address is https://gunther123.github.io/Wander/
 
-![alt text](assets/images/wander.jpg "Wander")
-
-
+![alt text](./assets/images/wander.jpg "Wander")
 
 ## Functionality Overview
 
@@ -31,3 +29,19 @@ Using the [NPS.Gov](https://www.nps.gov/) API, The user may input a two characte
 ## External Resources
 * [NPS.gov API Docs](https://www.nps.gov/subjects/developer/api-documentation.htm)
 * [OpenWeather API Docs](https://openweathermap.org/api)
+
+## Credits
+This project was made possible with hard work and dedication from the following individuals.
+ - Adam Flynn ( https://github.com/adamjflynn )
+ - Jesse Koon ( https://github.com/Jesse3421 )
+ - Sandy McCabe ( https://github.com/SandyMcCabe )
+ - Shawn McHenry ( https://github.com/drraccoony )
+ - Steven Slocum ( https://github.com/gunther123 )
+
+## Technologies 
+Technologies used in the making of this site include HTML, CSS, Tailwinds, and JQuery
+
+## License
+This website is covered under the GNU General Public License v3.0 (GNU GPLv3).  For more details, see the attached documentation.  
+
+./assets/images/License.txt
