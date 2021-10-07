@@ -1,4 +1,4 @@
-# MN Parks Buddy
+# Wander
 
 ## User Stories
 ```
@@ -8,9 +8,17 @@ so that I CAN SEE WHAT OPTIONS ARE AVAILABLE TO ME
 and the WEATHER CONDITIONS AT SAID PARKS.
 ```
 
+## Website
+
+The website address is https://gunther123.github.io/Wander/
+
+![alt text](assets/images/wander.jpg "Wander")
+
+
+
 ## Functionality Overview
 
-Using the [NPS.Gov](https://www.nps.gov/) API, The user may input a two character state code (Example: NY) and return a list of Parks in that state. Then, using the OpenWeather API, Loop through the parks Lat&Long to return the weather conditions for that park using the OpenWeather API [Open Call API](https://openweathermap.org/api/one-call-api).
+Using the [NPS.Gov](https://www.nps.gov/) API, The user may input a two character state code (Example: NY) and return a list of National Parks, Trails, and Historic Sites in that state. Then, using the OpenWeather API, Loop through the parks Lat&Long to return the weather conditions for that park using the OpenWeather API [Open Call API](https://openweathermap.org/api/one-call-api).
 
 * NPS.gov API Token `KrGPbUdmA0msAP4qXYSGzKcU89oOOcHNzdJ7Gpek`
 * OpenWeather API Token `bd344e93ec76626ec8f7447158241355`
