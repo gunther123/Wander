@@ -4,8 +4,8 @@ const PARK_LIMIT = 50; // Limit the number of states being returned.
 var parkWeatherData;
 var parkSelected;
 var parkData;
-var favoritepark 
-var favoriteparks 
+var favoritepark;
+var favoriteparks;
 
 
 loadFavorites();
@@ -13,10 +13,10 @@ loadFavorites();
 function loadFavorites() {
     
     console.log('[Favorites] Loading Park Favorites from localStorage');
-    if (localStorage.getItem('favorites') === null) {
-        alert("You don't have any favorites yet. Browse around and add some advernterous destinations to your list")
+    if (localStorage.getItem('favoriteParks') === null) {
+      favoriteParks = [];
     } else {
-    favoriteParks = JSON.parse(localStorage.getItem('favorites'));
+    favoriteParks = JSON.parse(localStorage.getItem('favoriteParks'));
     }
     console.log(favoriteParks);
    renderFavorites(favoriteParks)
@@ -29,14 +29,18 @@ function renderFavorites(favoriteParks) {
    
    
     if(!favoriteParks) {
-        alert("You don't have any favorites yet. Browse around and add some advernterous destinations to your list")
+      console.log('No Favorites');  
+      //alert("You don't have any favorites yet. Browse around and add some advernterous destinations to your list")
     } else {
       var favParkName = favoriteParks.parkName
-      console.log(favParkName)
+      //console.log(favParkName)
       var favParkId = favoriteParks.parkId
-      console.log(favParkId)
-    for (let i = 0; i < localStorage.length; i++) {
-      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openPark(${favParkId})'> ${favParkName} </a></li>`;
+      //console.log(favParkId)
+      console.log('There are ' + favoriteParks.length + ' favorite parks.')
+    for (let i = 0; i < favoriteParks.length; i++) {
+      favItemName = favoriteParks[i].parkName;
+      favItemId = favoriteParks[i].parkId;
+      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favItemId}")'> ${favItemName} </a></li>`;
       favList += favListLi;
       favParkNum++
     
@@ -53,6 +57,12 @@ $(document).ready(function () {
     sortField: "text",
   });
 });
+
+
+function openFavPark(parkId) {
+  console.log('Park selected - ID: ' + parkId)
+}
+
 
 // When Search is clicked.
 $("#searchBtn").click(function () {
@@ -142,12 +152,7 @@ function openPark(park) {
     parkData.data[park].entranceFees[0].description +
     "\n"
   );
-  /* TODO: Fetch OpenWeather API with lat & long 
-    Note: Use the previously defined parkLat & parkLong to pass thorugh the Fetch for OpenWeather.
-    */
   fetchWeather(parkLat, parkLong);
-
-  // TODO: Toggle visiblity on modal.
 }
 
 function fetchWeather(lat, long) {
@@ -213,10 +218,6 @@ function chooseFavoritePark() {
   favoritePark.push(newEntry);
   console.log(favoritePark);
   localStorage.setItem("favorites", JSON.stringify(newEntry));
-
-
-
-
 }
 
 function openMap() {
