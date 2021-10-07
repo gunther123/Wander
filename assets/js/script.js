@@ -14,7 +14,7 @@ function loadFavorites() {
     
     console.log('[Favorites] Loading Park Favorites from localStorage');
     if (localStorage.getItem('favorites') === null) {
-    
+        alert("You don't have any favorites yet. Browse around and add some advernterous destinations to your list")
     } else {
     favoriteParks = JSON.parse(localStorage.getItem('favorites'));
     }
@@ -35,10 +35,10 @@ function renderFavorites(favoriteParks) {
       console.log(favParkName)
       var favParkId = favoriteParks.parkId
       console.log(favParkId)
-    for (let i = 0; i < favoriteParks.length; i++) {
+    for (let i = 0; i < localStorage.length; i++) {
       favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openPark(${favParkId})'> ${favParkName} </a></li>`;
       favList += favListLi;
-     favParkNum++
+      favParkNum++
     
       $("#favorites-container").html(favListUl);
       $("#fav-list-ul").html(favList);
