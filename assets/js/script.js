@@ -221,6 +221,12 @@ function renderError(title, body) {
   document.getElementById("errorBody").innerHTML = body;
 }
 
+jQuery(document).on('keyup', function (evt) {
+  if (evt.keyCode == 27) {
+    closeModal();
+  }
+});
+
 function openFavModal() {
   $(favoriteModal).show();
   loadFavorites(); // I dont think this is needed, but it can stay.-SM
