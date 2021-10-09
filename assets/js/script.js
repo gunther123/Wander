@@ -59,9 +59,9 @@ function openFavPark(parkId, parkName) {
   //console.log('Park selected - ID: ' + parkId)
   fetch(
     "https://developer.nps.gov/api/v1/parks?q=" +
-    parkName +
+    parkId +
     "&api_key=" +
-    NPSAPIKEY +"&limit=10"
+    NPSAPIKEY +"&limit=20"
   )
     .then((response) => response.json())
     .then((data) => {
