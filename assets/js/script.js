@@ -20,8 +20,13 @@ function loadFavorites() {
   renderFavorites(favoriteParks);
 }
 
+function wipeFavorites() {
+  localStorage.clear();
+  location.reload();
+}
+
 function renderFavorites(favoriteParks) {
-  let favListUl = `<ul id="fav-list-ul" class="py-1"></ul>`;
+  let favListUl = `<ul id="fav-list-ul" class="py-1 list-disc"></ul>`;
   let favList = ``;
   let favParkNum = 0;
 
@@ -51,8 +56,32 @@ $(document).ready(function () {
 });
 
 function openFavPark(parkId) {
-  console.log('Park selected - ID: ' + parkId)
-}
+  //console.log('Park selected - ID: ' + parkId)
+  fetch(
+    "https://developer.nps.gov/api/v1/parks?q=" +
+    parkId +
+    "&api_key=" +
+    NPSAPIKEY +"&limit=1"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(
+        "⭐ Favorite parked fetched. ID # " +
+        parkId + ". Complete object below:"
+      );
+      console.log(data); // Complete JSON data object
+      //renderParks(data.data); //Call the function to show results in web console.
+      //parkData = data;
+      parkData = data;
+      console.log(parkData);
+      closeFavModal();
+      openPark(0);
+    })
+    .catch((error) => {
+      renderError('NPS API Error!', 'There was a problem fetching parks from the NPS API Endpoint.')
+      console.error("Error: ", error);
+    });
+};
 
 // When Search is clicked.
 $("#searchBtn").click(function () {
