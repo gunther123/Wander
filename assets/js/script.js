@@ -37,7 +37,7 @@ function renderFavorites(favoriteParks) {
     for (let i = 0; i < favoriteParks.length; i++) {
       favItemName = favoriteParks[i].parkName;
       favItemId = favoriteParks[i].parkId;
-      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favItemId}")'> ${favItemName} </a></li>`;
+      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favItemId}","${favItemName}")'> ${favItemName} </a></li>`;
       favList += favListLi;
       favParkNum++
 
@@ -55,18 +55,18 @@ $(document).ready(function () {
   });
 });
 
-function openFavPark(parkId) {
+function openFavPark(parkId, parkName) {
   //console.log('Park selected - ID: ' + parkId)
   fetch(
     "https://developer.nps.gov/api/v1/parks?q=" +
-    parkId +
+    parkName +
     "&api_key=" +
-    NPSAPIKEY +"&limit=1"
+    NPSAPIKEY +"&limit=10"
   )
     .then((response) => response.json())
     .then((data) => {
       console.log(
-        "⭐ Favorite parked fetched. ID # " +
+        "⭐ Favorite parked fetched. Name: " + parkName +", ID # " +
         parkId + ". Complete object below:"
       );
       console.log(data); // Complete JSON data object
@@ -75,7 +75,7 @@ function openFavPark(parkId) {
       parkData = data;
       console.log(parkData);
       closeFavModal();
-      openPark(0);
+      openPark(data.data.length-1);
     })
     .catch((error) => {
       renderError('NPS API Error!', 'There was a problem fetching parks from the NPS API Endpoint.')
