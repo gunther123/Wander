@@ -1,14 +1,20 @@
-/*@tailwind base;
-@tailwind components;
-@tailwind utilities;*/
-
-:root {
-    --first-color: #7d542e;
-    --secondary-color: #f3ebcf;
-    --third-color: #565321;
-    --fourth-color: #707431;
-    --fifth-color: #4a3a37;
+.modalBannerImage {
+    margin-inline: -30px;
+    margin-top: -50px;
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    opacity: 1;
+    background-image: url('https://via.placeholder.com/1500x400');
 }
-i {
-    color: white;
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    /* Or flex-grow: 1;*/
 }
