@@ -36,8 +36,8 @@ function renderFavorites(favoriteParks) {
     console.log('There are ' + favoriteParks.length + ' favorite parks.')
     for (let i = 0; i < favoriteParks.length; i++) {
       favItemName = favoriteParks[i].parkName;
-      favItemId = favoriteParks[i].parkId;
-      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favItemId}","${favItemName}")'> ${favItemName} </a></li>`;
+      favParkCode = favoriteParks[i].parkCode;
+      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favParkCode}","${favItemName}")'> ${favItemName} </a></li>`;
       favList += favListLi;
       favParkNum++
 
@@ -55,11 +55,11 @@ $(document).ready(function () {
   });
 });
 
-function openFavPark(parkId, parkName) {
+function openFavPark(parkCode, parkName) {
   //console.log('Park selected - ID: ' + parkId)
   fetch(
-    "https://developer.nps.gov/api/v1/parks?q=" +
-    parkId +
+    "https://developer.nps.gov/api/v1/parks?parkCode=" +
+    parkCode +
     "&api_key=" +
     NPSAPIKEY +"&limit=20"
   )
@@ -67,7 +67,7 @@ function openFavPark(parkId, parkName) {
     .then((data) => {
       console.log(
         "⭐ Favorite parked fetched. Name: " + parkName +", ID # " +
-        parkId + ". Complete object below:"
+        parkCode + ". Complete object below:"
       );
       console.log(data); // Complete JSON data object
       //renderParks(data.data); //Call the function to show results in web console.
@@ -229,7 +229,7 @@ function closeModal() {
 
 function addFavoritePark() {
   document.getElementById("favButton").innerHTML = "Added!"
-  let newEntry = { parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
+  let newEntry = { parkName: parkData.data[parkSelected].fullName, parkCode: parkData.data[parkSelected].parkCode }
   favoriteParks.push(newEntry);
   localStorage.setItem("favoriteParksCollection", JSON.stringify(favoriteParks));
   console.log(favoriteParks);
