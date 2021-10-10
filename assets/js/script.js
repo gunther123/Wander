@@ -4,20 +4,42 @@ const PARK_LIMIT = 50; // Limit the number of states being returned.
 var parkWeatherData;
 var parkSelected;
 var parkData;
-var favoriteParks;
+var favoriteParks = [];
 
 loadFavorites();
 
 function loadFavorites() {
+
   console.log('[Favorites] Loading Park Favorites from localStorage');
-  if (localStorage.getItem("favoriteParks") === null) {
+  if (localStorage.getItem('favoriteParksCollection') === null) {
     favoriteParks = [];
   } else {
-    favoriteParks = localStorage.getItem('favoriteParks');
+    favoriteParks = JSON.parse(localStorage.getItem('favoriteParksCollection'));
   }
   console.log(favoriteParks);
-  console.log('[Favorites] Park Favorites Loaded');
-  //TODO: Render the array on the page somewhere.
+  renderFavorites(favoriteParks);
+}
+
+function renderFavorites(favoriteParks) {
+  let favListUl = `<ul id="fav-list-ul" class="py-1"></ul>`;
+  let favList = ``;
+  let favParkNum = 0;
+
+  if (!favoriteParks) {
+    console.log('No Favorites');
+  } else {
+    console.log('There are ' + favoriteParks.length + ' favorite parks.')
+    for (let i = 0; i < favoriteParks.length; i++) {
+      favItemName = favoriteParks[i].parkName;
+      favItemId = favoriteParks[i].parkId;
+      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favItemId}")'> ${favItemName} </a></li>`;
+      favList += favListLi;
+      favParkNum++
+
+      $("#favorites-container").html(favListUl);
+      $("#fav-list-ul").html(favList);
+    }
+  }
 }
 
 populateStateSelect(STATES);
@@ -27,6 +49,10 @@ $(document).ready(function () {
     sortField: "text",
   });
 });
+
+function openFavPark(parkId) {
+  console.log('Park selected - ID: ' + parkId)
+}
 
 // When Search is clicked.
 $("#searchBtn").click(function () {
@@ -67,10 +93,8 @@ function renderParks(arr) {
 
   for (let parks of arr) {
     let parkName = parks.fullName;
-    //let parkURL = parks.url
-    let parkListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick="openPark(${parkNum})">${parkName}</a></li>`;
+    let parkListLi = `<li id='park-${parkNum}'><a id='park-url-${parkNum}' href='#' onclick='openPark(${parkNum})'>${parkName}</a></li>`;
     parkList += parkListLi;
-    //console.log(parkList)
     parkNum++;
   }
   $("#park-list-container").html(parkListUl);
@@ -116,12 +140,7 @@ function openPark(park) {
     parkData.data[park].entranceFees[0].description +
     "\n"
   );
-  /* TODO: Fetch OpenWeather API with lat & long 
-    Note: Use the previously defined parkLat & parkLong to pass thorugh the Fetch for OpenWeather.
-    */
   fetchWeather(parkLat, parkLong);
-
-  // TODO: Toggle visiblity on modal.
 }
 
 function fetchWeather(lat, long) {
@@ -179,13 +198,12 @@ function closeModal() {
   $(parkModal).hide();
 }
 
-function favoritePark() {
-  document.getElementById("favButton").innerHTML = "Added!";
-  console.log('Adding park to favorites')
+function addFavoritePark() {
+  document.getElementById("favButton").innerHTML = "Added!"
   let newEntry = { parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
   favoriteParks.push(newEntry);
+  localStorage.setItem("favoriteParksCollection", JSON.stringify(favoriteParks));
   console.log(favoriteParks);
-  localStorage.setItem('favoriteParks', JSON.stringify(favoriteParks));
 }
 
 function openMap() {
@@ -193,7 +211,7 @@ function openMap() {
 }
 
 function openParkWebsite() {
-  window.open(parkURL);
+  window.open(parkURL); 
 }
 
 function renderError(title, body) {
@@ -202,3 +220,19 @@ function renderError(title, body) {
   document.getElementById("errorTitle").innerHTML = title;
   document.getElementById("errorBody").innerHTML = body;
 }
+
+jQuery(document).on('keyup', function (evt) {
+  if (evt.keyCode == 27) {
+    closeModal();
+  }
+});
+
+function openFavModal() {
+  $(favoriteModal).show();
+  loadFavorites(); // I dont think this is needed, but it can stay.-SM
+}
+
+function closeFavModal() {
+  $(favoriteModal).hide();
+}
+
