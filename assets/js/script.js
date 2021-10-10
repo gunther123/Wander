@@ -20,8 +20,13 @@ function loadFavorites() {
   renderFavorites(favoriteParks);
 }
 
+function wipeFavorites() {
+  localStorage.clear();
+  location.reload();
+}
+
 function renderFavorites(favoriteParks) {
-  let favListUl = `<ul id="fav-list-ul" class="py-1"></ul>`;
+  let favListUl = `<ul id="fav-list-ul" class="py-1 list-disc"></ul>`;
   let favList = ``;
   let favParkNum = 0;
 
@@ -31,8 +36,8 @@ function renderFavorites(favoriteParks) {
     console.log('There are ' + favoriteParks.length + ' favorite parks.')
     for (let i = 0; i < favoriteParks.length; i++) {
       favItemName = favoriteParks[i].parkName;
-      favItemId = favoriteParks[i].parkId;
-      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favItemId}")'> ${favItemName} </a></li>`;
+      favParkCode = favoriteParks[i].parkCode;
+      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favParkCode}","${favItemName}")'> ${favItemName} </a></li>`;
       favList += favListLi;
       favParkNum++
 
@@ -50,9 +55,33 @@ $(document).ready(function () {
   });
 });
 
-function openFavPark(parkId) {
-  console.log('Park selected - ID: ' + parkId)
-}
+function openFavPark(parkCode, parkName) {
+  //console.log('Park selected - ID: ' + parkId)
+  fetch(
+    "https://developer.nps.gov/api/v1/parks?parkCode=" +
+    parkCode +
+    "&api_key=" +
+    NPSAPIKEY +"&limit=20"
+  )
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(
+        "⭐ Favorite parked fetched. Name: " + parkName +", ID # " +
+        parkCode + ". Complete object below:"
+      );
+      console.log(data); // Complete JSON data object
+      //renderParks(data.data); //Call the function to show results in web console.
+      //parkData = data;
+      parkData = data;
+      console.log(parkData);
+      closeFavModal();
+      openPark(data.data.length-1);
+    })
+    .catch((error) => {
+      renderError('NPS API Error!', 'There was a problem fetching parks from the NPS API Endpoint.')
+      console.error("Error: ", error);
+    });
+};
 
 // When Search is clicked.
 $("#searchBtn").click(function () {
@@ -200,7 +229,7 @@ function closeModal() {
 
 function addFavoritePark() {
   document.getElementById("favButton").innerHTML = "Added!"
-  let newEntry = { parkName: parkData.data[parkSelected].fullName, parkId: parkData.data[parkSelected].id }
+  let newEntry = { parkName: parkData.data[parkSelected].fullName, parkCode: parkData.data[parkSelected].parkCode }
   favoriteParks.push(newEntry);
   localStorage.setItem("favoriteParksCollection", JSON.stringify(favoriteParks));
   console.log(favoriteParks);
