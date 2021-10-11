@@ -36,9 +36,8 @@ function renderFavorites(favoriteParks) {
     console.log('There are ' + favoriteParks.length + ' favorite parks.')
     for (let i = 0; i < favoriteParks.length; i++) {
       favItemName = favoriteParks[i].parkName;
-      favItemNameA = favoriteParks[i].parkFullName
       favParkCode = favoriteParks[i].parkCode;
-      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favParkCode}","${favItemName}")'> ${favItemNameA} </a></li>`;
+      favListLi = `<li id='park-${favParkNum}'><a href='#' onclick='openFavPark("${favParkCode}","${favItemName}")'> ${favItemName} </a></li>`;
       favList += favListLi;
       favParkNum++
 
@@ -230,10 +229,7 @@ function closeModal() {
 
 function addFavoritePark() {
   document.getElementById("favButton").innerHTML = "Added!"
-  let parkNameContainer = parkData.data[parkSelected].fullName;
-  let newParkName = parkNameContainer.replace("'", "")
-
-  let newEntry = { parkName: newParkName, parkCode: parkData.data[parkSelected].parkCode, parkFullName: parkData.data[parkSelected].fullName}
+  let newEntry = { parkName: parkData.data[parkSelected].fullName, parkCode: parkData.data[parkSelected].parkCode }
   favoriteParks.push(newEntry);
   localStorage.setItem("favoriteParksCollection", JSON.stringify(favoriteParks));
   console.log(favoriteParks);
@@ -268,4 +264,3 @@ function openFavModal() {
 function closeFavModal() {
   $(favoriteModal).hide();
 }
-
