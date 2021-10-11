@@ -5,5 +5,16 @@
     background-size: cover;
     background-position: center;
     opacity: 1;
-    background-image: url('');
+    background-image: url('https://via.placeholder.com/1500x400');
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    /* Or flex-grow: 1;*/
 }
